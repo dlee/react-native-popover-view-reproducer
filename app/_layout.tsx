@@ -1,24 +1,22 @@
-import { StyleSheet, Switch, Text, View } from "react-native";
-import { useState } from "react";
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { NavigationBar } from "@zoontek/react-native-navigation-bar";
 
-export default function HomeScreen() {
-  const [leftSwitch, setLeftSwitch] = useState(false);
-  const [centerSwitch, setCenterSwitch] = useState(false);
-  const [rightSwitch, setRightSwitch] = useState(false);
+export default function RootLayout() {
   return (
-    <View style={styles.switchContainer}>
-      <Text>Left:</Text>
-      <Switch value={leftSwitch} onValueChange={setLeftSwitch} />
-      <Switch value={centerSwitch} onValueChange={setCenterSwitch} />
-      <Switch value={rightSwitch} onValueChange={setRightSwitch} />
-    </View>
+    <>
+      <StatusBar style="auto" />
+      <NavigationBar barStyle="light-content" />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen
+          name="modal"
+          options={{
+            presentation: "modal",
+            animation: "fade",
+          }}
+        />
+      </Stack>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  switchContainer: {
-    padding: 70,
-    flexDirection: "row",
-    gap: 20,
-  },
-});

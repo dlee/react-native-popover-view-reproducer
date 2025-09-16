@@ -20,7 +20,11 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "androidNavigationBar": {
+        "enforceContrast": false
+      },
+      "package": "com.playground.app"
     },
     "web": {
       "output": "static",
@@ -28,11 +32,15 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font",
-      "expo-notifications",
-      "expo-iap",
-      "expo-web-browser",
       "expo-system-ui",
+      [
+        "@zoontek/react-native-navigation-bar",
+        { 
+          "android": { 
+            "enforceNavigationBarContrast": false 
+          } 
+        }
+      ],
       [
         "expo-splash-screen",
         {
